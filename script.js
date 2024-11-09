@@ -276,12 +276,14 @@ function arrangeImages(paperType, numberOfCopies) {
     });
 
     document.getElementById('download-button').addEventListener('click', function() {
-        const container = document.querySelector('.container');
-        html2canvas(container).then(canvas => {
-            const imgData = canvas.toDataURL('image/jpeg');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            pdf.addImage(imgData, 'JPEG', 0, 0);
-            pdf.save('a4-layout.pdf');
-        });
+    const container = document.querySelector('.container');
+    html2canvas(container).then(canvas => {
+        const imgData = canvas.toDataURL('image/jpeg');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        pdf.save('a4-layout.pdf');
+    }).catch(error => {
+        console.error('Error generating PDF:', error);
     });
+});
 }

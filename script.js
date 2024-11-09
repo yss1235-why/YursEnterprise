@@ -241,6 +241,8 @@ function arrangeImages(paperType, numberOfCopies) {
         .arranged-image {
             width: 100%;
             height: 100%;
+            border: 2px solid black; /* Ensure the border is applied here */
+            box-sizing: border-box; /* Include the border in the element's dimensions */
         }
         @media print {
             @page {
